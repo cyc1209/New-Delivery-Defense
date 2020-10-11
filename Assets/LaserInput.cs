@@ -31,7 +31,7 @@ public class LaserInput : MonoBehaviour
         {
             if (interactWithUI != null && interactWithUI.GetState(input_Sources))
             {
-                if (currentObject.tag == "Box")
+                if (currentObject.CompareTag("Box"))
                 {
                     currentObject.transform.position += this.transform.forward * - 0.02f;
                 }
