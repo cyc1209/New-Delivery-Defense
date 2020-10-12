@@ -8,7 +8,6 @@ public class BoxJudge : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        UnityEngine.Debug.Log("ll");
         if (collision.gameObject.CompareTag("Box"))
         {
             if(collision.gameObject.GetComponent<Box>().weight > 4.5f)
