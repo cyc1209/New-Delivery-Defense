@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -12,12 +14,25 @@ public class Box : MonoBehaviour
     private string currentTag;
     private bool touchable;
 
+    public float weight;
+    private float colorRandom;
+
+
     // Start is called before the first frame update
     void Start()
     {
         interactable = GetComponent<Interactable>();
         currentTag = this.tag;
         touchable = true;
+        weight = UnityEngine.Random.Range(3.0f, 5.0f);
+        this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
+        colorRandom = UnityEngine.Random.Range(1.0f, 4.0f);
+        if (colorRandom >= 1.0f && colorRandom < 2.0f)
+            this.GetComponent<MeshRenderer>().material.color = Color.red;
+        if (colorRandom >= 2.0f && colorRandom < 3.0f)
+            this.GetComponent<MeshRenderer>().material.color = Color.blue ;
+        if (colorRandom >= 3.0f && colorRandom <= 4.0f)
+            this.GetComponent<MeshRenderer>().material.color = Color.green;
     }
 
     private Hand.AttachmentFlags attachmentFlags =
