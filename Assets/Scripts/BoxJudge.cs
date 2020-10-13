@@ -10,7 +10,12 @@ public class BoxJudge : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Box"))
         {
-            if(collision.gameObject.GetComponent<Box>().weight > 4.5f)
+            if(collision.gameObject.GetComponent<Box>().weight > 4.5f)  //크기
+            {
+                UnityEngine.Debug.Log("Fail");
+            }
+
+            if(collision.gameObject.GetComponent<MeshRenderer>().material.color == Color.red)   //색깔
             {
                 UnityEngine.Debug.Log("Fail");
             }

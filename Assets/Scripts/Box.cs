@@ -31,7 +31,7 @@ public class Box : MonoBehaviour
         if (colorRandom >= 1.0f && colorRandom < 2.0f)
             this.GetComponent<MeshRenderer>().material.color = Color.red;
         if (colorRandom >= 2.0f && colorRandom < 3.0f)
-            this.GetComponent<MeshRenderer>().material.color = Color.blue ;
+            this.GetComponent<MeshRenderer>().material.color = Color.blue;
         if (colorRandom >= 3.0f && colorRandom <= 4.0f)
             this.GetComponent<MeshRenderer>().material.color = Color.green;
     }
@@ -81,3 +81,4 @@ public class Box : MonoBehaviour
             UnityEngine.Debug.Log("Crash!");
         }
     }
+}
