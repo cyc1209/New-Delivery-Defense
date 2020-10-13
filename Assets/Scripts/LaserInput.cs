@@ -33,9 +33,13 @@ public class LaserInput : MonoBehaviour
             {
                 if (currentObject.CompareTag("Box"))
                 {
-                    currentObject.transform.position += this.transform.forward * - 0.02f;
+                    currentObject.transform.position += this.transform.forward * - 0.02f; // 물체의 점과 플레이어 점을 선으로 그어서 당기기
                 }
             }
         }
     }
 }
+
+
+
+//대충 coroutine으로 만들기 transform.lerp이용
