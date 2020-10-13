@@ -14,7 +14,7 @@ public class Box : MonoBehaviour
     private string currentTag;
     private bool touchable;
 
-    private bool breakable = false;
+    private bool breakable = true;
     public float weight;
     private float colorRandom;
 
@@ -76,9 +76,10 @@ public class Box : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 2 && breakable)
+        if (collision.relativeVelocity.magnitude > 5 && breakable)
         {
             UnityEngine.Debug.Log("Crash!");
+            this.GetComponent<MeshRenderer>().material.color = Color.white;
         }
     }
 }
