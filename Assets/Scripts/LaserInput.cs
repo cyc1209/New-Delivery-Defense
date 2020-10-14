@@ -48,5 +48,5 @@ public class LaserInput : MonoBehaviour
 }
 
 
-
+// 변수로 시작점 만들고 속도 변수도 만들고 하면 될듯
 //대충 coroutine으로 만들기 transform.lerp이용
