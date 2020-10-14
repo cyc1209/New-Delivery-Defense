@@ -6,7 +6,7 @@ using UnityEngine;
 public class BoxSpawner : MonoBehaviour
 {
     public float spawnTime = 2.0f;
-    public float limitTime = 10f;
+    public float limitTime = 20f;
     public Transform spawnPoint;
     public GameObject box;
     float deltaSpawnTime;
@@ -20,8 +20,6 @@ public class BoxSpawner : MonoBehaviour
        
         if(deltaSpawnTime > spawnTime && playingTime < limitTime)
         {
-            UnityEngine.Debug.Log(playingTime);
-            UnityEngine.Debug.Log(limitTime);
             deltaSpawnTime = 0;
 
             Instantiate(box, spawnPoint.position, Quaternion.Euler(0, 0, 0));

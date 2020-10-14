@@ -17,8 +17,9 @@ public class BoxJudge : MonoBehaviour
 
             if(collision.gameObject.GetComponent<MeshRenderer>().material.color == Color.red)   //색깔
             {
-                UnityEngine.Debug.Log("Fail");
+               
             }
+            Destroy(collision.gameObject);
         }
     }
 }

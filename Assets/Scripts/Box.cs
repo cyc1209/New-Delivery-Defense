@@ -26,7 +26,10 @@ public class Box : MonoBehaviour
         currentTag = this.tag;
         touchable = true;
         weight = UnityEngine.Random.Range(3.0f, 5.0f);
-        this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
+        if(weight <= 4.5f)
+            this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
+        else
+            this.transform.localScale = new Vector3(weight * 0.2f, weight * 0.4f, weight * 0.4f);
         colorRandom = UnityEngine.Random.Range(1.0f, 4.0f);
         if (colorRandom >= 1.0f && colorRandom < 2.0f)
             this.GetComponent<MeshRenderer>().material.color = Color.red;
