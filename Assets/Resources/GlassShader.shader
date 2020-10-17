@@ -1,53 +1,101 @@
-﻿Shader "Custom/GlassShader"
-{
-    Properties
-    {
-        _Color ("Color", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
-    }
-    SubShader
-    {
-        Tags { "RenderType"="Opaque" }
-        LOD 200
+﻿// Upgrade NOTE: upgraded instancing buffer 'Props' to new syntax.
 
-        CGPROGRAM
-        // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+Shader "Custom/GlassShader" {
+		Properties
+		{
+			_MainTex("Texture", 2D) = "white" {}
+			_Color("Color", Color) = (1, 1, 1, 1)
+			_EdgeColor("Edge Color", Color) = (1, 1, 1, 1)
+			_EdgeThickness("Silouette Dropoff Rate", float) = 1.0
+		}
 
-        // Use shader model 3.0 target, to get nicer looking lighting
-        #pragma target 3.0
+			SubShader
+			{
+				Tags
+				{
+					"Queue" = "Transparent"
+				}
 
-        sampler2D _MainTex;
+				Pass
+				{
+					Cull Off
+					ZWrite Off
+					Blend SrcAlpha OneMinusSrcAlpha // standard alpha blending
 
-        struct Input
-        {
-            float2 uv_MainTex;
-        };
+					CGPROGRAM
 
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
+					#pragma vertex vert
+					#pragma fragment frag
 
-        // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-        // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-        // #pragma instancing_options assumeuniformscaling
-        UNITY_INSTANCING_BUFFER_START(Props)
-            // put more per-instance properties here
-        UNITY_INSTANCING_BUFFER_END(Props)
+				// Properties
+				sampler2D		_MainTex;
+				uniform float4	_Color;
+				uniform float4	_EdgeColor;
+				uniform float   _EdgeThickness;
 
-        void surf (Input IN, inout SurfaceOutputStandard o)
-        {
-            // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
-        }
-        ENDCG
-    }
-    FallBack "Diffuse"
-}
+				struct vertexInput
+				{
+					float4 vertex : POSITION;
+					float3 normal : NORMAL;
+					float3 texCoord : TEXCOORD0;
+				};
+
+				struct vertexOutput
+				{
+					float4 pos : SV_POSITION;
+					float3 normal : NORMAL;
+					float3 texCoord : TEXCOORD0;
+					float3 viewDir : TEXCOORD1;
+				};
+
+				vertexOutput vert(vertexInput input)
+				{
+					vertexOutput output;
+
+					// convert input to world space
+					output.pos = UnityObjectToClipPos(input.vertex);
+					float4 normal4 = float4(input.normal, 0.0);
+					output.normal = normalize(mul(normal4, unity_WorldToObject).xyz);
+					output.viewDir = normalize(_WorldSpaceCameraPos - mul(unity_ObjectToWorld, input.vertex).xyz);
+
+					output.texCoord = input.texCoord;
+
+					return output;
+				}
+
+				float4 frag(vertexOutput input) : COLOR
+				{
+					// sample texture for color
+					float4 texColor = tex2D(_MainTex, input.texCoord.xy);
+
+					// apply silouette equation
+					// based on how close normal is to being orthogonal to view vector
+					// dot product is smaller the smaller the angle bw the vectors is
+					// close to edge = closer to 0
+					// far from edge = closer to 1
+					float edgeFactor = abs(dot(input.viewDir, input.normal));
+
+					// apply edgeFactor to Albedo color & EdgeColor
+					float oneMinusEdge = 1.0 - edgeFactor;
+					float3 rgb = (_Color.rgb * edgeFactor) + (_EdgeColor * oneMinusEdge);
+					rgb = min(float3(1, 1, 1), rgb); // clamp to real color vals
+					rgb = rgb * texColor.rgb;
+
+					// apply edgeFactor to Albedo transparency & EdgeColor transparency
+					// close to edge = more opaque EdgeColor & more transparent Albedo 
+					float opacity = min(1.0, _Color.a / edgeFactor);
+
+					// opacity^thickness means the edge color will be near 0 away from the edges
+					// and escalate quickly in opacity towards the edges
+					opacity = pow(opacity, _EdgeThickness);
+					opacity = opacity * texColor.a;
+
+					float4 output = float4(rgb, opacity);
+					return output;
+				}
+
+				ENDCG
+			}
+			}
+
+	}

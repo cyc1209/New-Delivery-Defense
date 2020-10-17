@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CountBox : MonoBehaviour
 {
     // Start is called before the first frame update
  //Make sure to assign this in the Inspector window
     Collider m_Collider;
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     void Start()
     {
@@ -25,7 +25,16 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (m_Collider.bounds.Contains(other.transform.position))
         {
-            gameManager.boxCount ++;
+            if (other.gameObject.CompareTag("Box"))
+            {
+                UnityEngine.Debug.Log("d");
+                if (other.gameObject.GetComponent<Box>().touchable)
+                {
+                    UnityEngine.Debug.Log("f");
+                }
+                gameManager.boxCount++;
+                other.gameObject.GetComponent<Box>().touchable = false;
+            }
         }
     }
 }

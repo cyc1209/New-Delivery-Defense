@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Permissions;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
@@ -13,7 +14,7 @@ public class Box : MonoBehaviour
 
     private Interactable interactable;
     private string currentTag;
-    private bool touchable;
+    public bool touchable;
 
     public bool breakable = false;
     public bool updown = false;
@@ -31,6 +32,7 @@ public class Box : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>();
         interactable = GetComponent<Interactable>();
         //currentTag = this.tag;
@@ -41,6 +43,7 @@ public class Box : MonoBehaviour
         if (random <= 2.0f && random >= 1.0f)
         {
             breakable = true;
+            this.gameObject.GetComponent<MeshRenderer>().material.mainTexture= Resources.Load("Resources/glass") as Texture;
 
         }
 
@@ -76,7 +79,7 @@ public class Box : MonoBehaviour
             if (weight <= 4.5f)
                 this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
             else
-                this.transform.localScale = new Vector3(weight * 0.2f, weight * 0.4f, weight * 0.4f);
+                this.transform.localScale = new Vector3(weight * 0.15f, weight * 0.3f, weight * 0.3f);
         }
 
 
@@ -127,7 +130,8 @@ public class Box : MonoBehaviour
             UnityEngine.Debug.Log("Crash!");
             playSound(audioClip, audioSource);
             //this.GetComponent<MeshRenderer>().material.color = Color.white;
-            gameManager.boxCount--;
+            if(collision.gameObject.CompareTag("TruckBound"))
+                gameManager.boxCount--;
             Destroy(this.gameObject);
         }
 
@@ -136,7 +140,8 @@ public class Box : MonoBehaviour
             UnityEngine.Debug.Log("down");
             playSound(audioClip, audioSource);
             //this.GetComponent<MeshRenderer>().material.color = Color.white;
-            gameManager.boxCount--;
+            if (collision.gameObject.CompareTag("TruckBound"))
+                gameManager.boxCount--;
             Destroy(this.gameObject);
         }
     }
