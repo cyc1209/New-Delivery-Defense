@@ -11,12 +11,30 @@ public class LaserHandler : MonoBehaviour
     public SteamVR_LaserPointer laserPointer;
     public GameObject hand;
     public bool selected;
+    public GameManager gameManager;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         laserPointer.PointerIn += PointerInside;
         laserPointer.PointerOut += PointerOutside;
+        laserPointer.PointerClick += PointerClick;
         selected = false;
+    }
+
+    public void PointerClick(object sender, PointerEventArgs e)
+    {
+  
+        if (e.target.name == "StartButton")
+        {
+            Debug.Log("Button was clicked");
+            gameManager.LoadSizeScene();
+        }
+        if (e.target.name == "WaveStartButton")
+        {
+            Debug.Log("Button was clicked");
+            gameManager.WaveStart();
+        }
     }
     // Update is called once per frame
     void Update()

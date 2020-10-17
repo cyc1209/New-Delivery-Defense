@@ -353,6 +353,7 @@ MonoBehaviour:
   limitTime: 23
   spawnPoint: {fileID: 720427142}
   box: {fileID: 2617378477195178504, guid: 910658f948f0ed746be5ad85a9163964, type: 3}
+  gameManager: {fileID: 1270728896}
 --- !u!4 &720427142
 Transform:
   m_ObjectHideFlags: 0
@@ -580,6 +581,8 @@ MonoBehaviour:
   reputation: 0
   level: 0
   gameMode: 2
+  prevUI: {fileID: 0}
+  isGaming: 0
   boxCount: 0
 --- !u!4 &1270728897
 Transform:

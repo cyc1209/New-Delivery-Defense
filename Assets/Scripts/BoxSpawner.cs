@@ -11,18 +11,22 @@ public class BoxSpawner : MonoBehaviour
     public GameObject box;
     float deltaSpawnTime;
     float playingTime = 0;
+    public GameManager gameManager;
     
     void Update()
     {
-        deltaSpawnTime += Time.deltaTime;
-        playingTime += Time.deltaTime;
-        
-       
-        if(deltaSpawnTime > spawnTime && playingTime < limitTime)
+        if (gameManager.isGaming == true)
         {
-            deltaSpawnTime = 0;
+            deltaSpawnTime += Time.deltaTime;
+            playingTime += Time.deltaTime;
 
-            Instantiate(box, spawnPoint.position, Quaternion.Euler(0, 90, 0));
+
+            if (deltaSpawnTime > spawnTime && playingTime < limitTime)
+            {
+                deltaSpawnTime = 0;
+
+                Instantiate(box, spawnPoint.position, Quaternion.Euler(0, 90, 0));
+            }
         }
     }
 }

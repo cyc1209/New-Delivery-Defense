@@ -2972,7 +2972,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cbe636ca800df264c9fb91dc95fbd9e0, type: 2}
+  - {fileID: 2100000, guid: daff55babcdaf6f48820def1d4fe6d2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5438,6 +5438,8 @@ MonoBehaviour:
   reputation: 0
   level: 0
   gameMode: 1
+  prevUI: {fileID: 0}
+  isGaming: 0
   boxCount: 0
 --- !u!4 &1526441288
 Transform:
@@ -7298,6 +7300,7 @@ MonoBehaviour:
   limitTime: 23
   spawnPoint: {fileID: 2132521348}
   box: {fileID: 2617378477195178504, guid: 910658f948f0ed746be5ad85a9163964, type: 3}
+  gameManager: {fileID: 1526441287}
 --- !u!4 &2132521348
 Transform:
   m_ObjectHideFlags: 0
