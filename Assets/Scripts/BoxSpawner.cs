@@ -22,7 +22,7 @@ public class BoxSpawner : MonoBehaviour
         {
             deltaSpawnTime = 0;
 
-            Instantiate(box, spawnPoint.position, Quaternion.Euler(0, 0, 0));
+            Instantiate(box, spawnPoint.position, Quaternion.Euler(0, 90, 0));
         }
     }
 }
