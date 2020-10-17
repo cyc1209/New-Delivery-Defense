@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public int reputation = 0; //명성
     public int level = 0; //레벨
+    public int gameMode = 0;
 
     public int boxCount = 0;
     // Start is called before the first frame update
