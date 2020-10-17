@@ -6,20 +6,47 @@ using UnityEngine;
 
 public class BoxJudge : MonoBehaviour
 {
+    public int mode = 0;
+    public GameManager gameManager;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Box"))
         {
-            if(collision.gameObject.GetComponent<Box>().weight > 4.5f)  //크기
-            {
-                UnityEngine.Debug.Log("Fail");
-            }
+            switch (mode) {
+                case 0:
+                    if (collision.gameObject.GetComponent<Box>().weight > 4.5f)  //크기
+                    {
+                        // UnityEngine.Debug.Log("Fail");
+                        gameManager.reputation -= 10;
+                        //UnityEngine.Debug.Log(gameManager.reputation);
+                    }
+                    break;
 
-            if(collision.gameObject.GetComponent<MeshRenderer>().material.color == Color.red)   //색깔
-            {
-               
+                case 1:
+                    if (collision.gameObject.GetComponent<MeshRenderer>().material.color != Color.red)   //색깔
+                    {
+                        
+                    }
+                    break;
+                case 2:
+                    if (collision.gameObject.GetComponent<MeshRenderer>().material.color != Color.blue)   //색깔
+                    {
+
+                    }
+                    break;
+                case 3:
+                    if (collision.gameObject.GetComponent<MeshRenderer>().material.color != Color.green)   //색깔
+                    {
+
+                    }
+                    break;
+                default:
+                    break;
             }
             Destroy(collision.gameObject);
         }
     }
+
+
 }

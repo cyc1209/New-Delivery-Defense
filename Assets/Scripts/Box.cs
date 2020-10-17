@@ -14,17 +14,40 @@ public class Box : MonoBehaviour
     private string currentTag;
     private bool touchable;
 
-    private bool breakable = true;
+    public bool breakable = false;
+    public bool updown = false;
     public float weight;
     private float colorRandom;
+    private float random;
 
+
+    // 오디오 소스 생성해서 추가
+
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         interactable = GetComponent<Interactable>();
         currentTag = this.tag;
         touchable = true;
+
+        random = UnityEngine.Random.Range(1.0f, 10.0f);
+
+        if(random <= 2.0f && random >= 1.0f)
+        {
+            breakable = true;
+
+        }
+        else if(random >= 9.0f &&  random <= 10.0f)
+        {
+            updown = true;
+            
+        }
+        
+
         weight = UnityEngine.Random.Range(3.0f, 5.0f);
         if(weight <= 4.5f)
             this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
@@ -37,6 +60,8 @@ public class Box : MonoBehaviour
             this.GetComponent<MeshRenderer>().material.color = Color.blue;
         if (colorRandom >= 3.0f && colorRandom <= 4.0f)
             this.GetComponent<MeshRenderer>().material.color = Color.green;
+
+        
     }
 
     private Hand.AttachmentFlags attachmentFlags =
@@ -82,7 +107,14 @@ public class Box : MonoBehaviour
         if (collision.relativeVelocity.magnitude > 5 && breakable)
         {
             UnityEngine.Debug.Log("Crash!");
-            this.GetComponent<MeshRenderer>().material.color = Color.white;
+            playSound(audioClip, audioSource);
+            //this.GetComponent<MeshRenderer>().material.color = Color.white;
+            Destroy(this);
         }
+    }
+
+    public static void playSound(AudioClip clip, AudioSource source)
+    {
+        source.Play();
     }
 }
