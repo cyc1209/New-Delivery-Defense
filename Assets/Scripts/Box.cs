@@ -130,8 +130,10 @@ public class Box : MonoBehaviour
             UnityEngine.Debug.Log("Crash!");
             playSound(audioClip, audioSource);
             //this.GetComponent<MeshRenderer>().material.color = Color.white;
-            if(collision.gameObject.CompareTag("TruckBound"))
+            if (collision.gameObject.CompareTag("TruckBound"))
+            {
                 gameManager.boxCount--;
+            }
             Destroy(this.gameObject);
         }
 
@@ -141,7 +143,9 @@ public class Box : MonoBehaviour
             playSound(audioClip, audioSource);
             //this.GetComponent<MeshRenderer>().material.color = Color.white;
             if (collision.gameObject.CompareTag("TruckBound"))
+            {
                 gameManager.boxCount--;
+            }
             Destroy(this.gameObject);
         }
     }
