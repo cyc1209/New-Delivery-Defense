@@ -14,7 +14,7 @@ public class BoxSpawner : MonoBehaviour
     public GameManager gameManager;
     void Start()
     {
-        spawnTime = 2f + (1f / gameManager.level);
+        spawnTime = 0.5f + (2.5f / gameManager.level);
     }
     void Update()
     {
