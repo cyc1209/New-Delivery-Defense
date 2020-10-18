@@ -23,8 +23,8 @@ public class CountBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (m_Collider.bounds.Contains(other.transform.position))
-        {
+        //if (m_Collider.bounds.Contains(other.transform.position))
+        //{
             if (other.gameObject.CompareTag("Box"))
             {
                 UnityEngine.Debug.Log("d");
@@ -35,6 +35,6 @@ public class CountBox : MonoBehaviour
                 gameManager.boxCount++;
                 other.gameObject.GetComponent<Box>().touchable = false;
             }
-        }
+        //}
     }
 }
