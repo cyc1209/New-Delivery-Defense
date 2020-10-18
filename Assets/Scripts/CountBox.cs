@@ -31,9 +31,10 @@ public class CountBox : MonoBehaviour
                 if (other.gameObject.GetComponent<Box>().touchable)
                 {
                     UnityEngine.Debug.Log("f");
+                    gameManager.boxCount++;
+                    other.gameObject.GetComponent<Box>().touchable = false;
                 }
-                gameManager.boxCount++;
-                other.gameObject.GetComponent<Box>().touchable = false;
+              
             }
         //}
     }
