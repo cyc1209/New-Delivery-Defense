@@ -8,13 +8,24 @@ public class BoxDestroy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Box"))
+        if (gameManager.gameMode == 0)
         {
-            if(collision.gameObject.GetComponent<Box>().weight <= 4.5f)
+            if (collision.gameObject.CompareTag("Box"))
+            {
+                if (collision.gameObject.GetComponent<Box>().weight <= 4.5f)
+                {
+                    gameManager.reputation -= 10;
+                }
+                Destroy(collision.gameObject);
+            }
+        }
+        else if (gameManager.gameMode == 1)
+        {
+            if (collision.gameObject.CompareTag("Box"))
             {
                 gameManager.reputation -= 10;
+                Destroy(collision.gameObject);
             }
-            Destroy(collision.gameObject);
         }
     }
 }
