@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class LaserInput : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class LaserInput : MonoBehaviour
                 if (currentObject.CompareTag("Box"))
                 {
                     StartCoroutine("Grab");
+                    //currentObject.GetComponent<Interactable>().isHovering = true;
                 }
             }
         }

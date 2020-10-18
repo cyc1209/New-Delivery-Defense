@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
 
     public int reputation = 0; //명성
-    public int level = 0; //레벨
+    public int level = 1; //레벨
     public int gameMode = 0;
     private float timer = 0;
     public bool isGaming = false;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timer = boxSpawner.limitTime + 10.0f;
+        reputation = 100;
     }
 
     // Update is called once per frame
@@ -51,8 +53,26 @@ public class GameManager : MonoBehaviour
                     LoadTruckScene();
                 }
             }
+            if(reputation <= 0)
+            {
+                GameOver();
+            }
+;        }
+    }
 
-        }
+    public void ReStart()
+    {
+        timer = boxSpawner.limitTime + 10.0f;
+        reputation = 100;
+        uIManager.HidePrevUI();
+        uIManager.ShowIngameUI();
+        uIManager.HideGameOverUI();
+    }
+
+    private void GameOver()
+    {
+        isGaming = false;
+        uIManager.ShowGameOverUI();
     }
 
     public void LoadSizeScene()

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class UIManager : MonoBehaviour
     public Text countText;
     public GameObject prevUI;
     public GameObject ingameUI;
+    public GameObject gameoverUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,5 +49,14 @@ public class UIManager : MonoBehaviour
     public void ShowIngameUI()
     {
         ingameUI.SetActive(true);
+    }
+
+    public void HideGameOverUI()
+    {
+        gameoverUI.SetActive(false);
+    }
+    public void ShowGameOverUI()
+    {
+        gameoverUI.SetActive(true);
     }
 }
