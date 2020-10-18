@@ -17,6 +17,7 @@ public class LaserInput : MonoBehaviour
     {
         currentObject = null;
     }
+    public void onDistanceGrab(Hand hand)
 
     // Update is called once per frame
     private void Update()
@@ -50,3 +51,13 @@ public class LaserInput : MonoBehaviour
 
 // 변수로 시작점 만들고 속도 변수도 만들고 하면 될듯
 //대충 coroutine으로 만들기 transform.lerp이용
+
+
+//raycast and check if our hand is empty
+//are we pressing grip and trigger?
+//does the interactable component exist?
+//move the object to your hand
+
+//LateUpdate
+//did we get an object to our hand during this update?
+//attach the object
