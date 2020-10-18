@@ -26,7 +26,7 @@ public class BoxMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Box"))
         {
-            collision.gameObject.transform.Translate((edge_1.transform.position - edge_2.transform.position) * Time.deltaTime * 0.3f * gameManager.level, Space.World);
+            collision.gameObject.transform.Translate((edge_1.transform.position - edge_2.transform.position) * Time.deltaTime * 0.3f * gameManager.Level, Space.World);
         }
     }
 }

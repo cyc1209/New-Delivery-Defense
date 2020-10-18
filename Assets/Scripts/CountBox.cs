@@ -8,7 +8,15 @@ public class CountBox : MonoBehaviour
  //Make sure to assign this in the Inspector window
     Collider m_Collider;
     public GameManager gameManager;
+    private SoundManager soundManager;
+    private LevelManager levelManager;
 
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+    }
     void Start()
     {
         //Fetch the Collider from the GameObject this script is attached to
@@ -27,12 +35,14 @@ public class CountBox : MonoBehaviour
         //{
             if (other.gameObject.CompareTag("Box"))
             {
-                UnityEngine.Debug.Log("d");
+               // UnityEngine.Debug.Log("d");
                 if (other.gameObject.GetComponent<Box>().touchable)
                 {
-                    UnityEngine.Debug.Log("f");
+                 //   UnityEngine.Debug.Log("f");
                     gameManager.boxCount += 1;
+                    levelManager.TotalCountBox += 1;
                     other.gameObject.GetComponent<Box>().touchable = false;
+                    soundManager.PlayCorrectSound();
                 }
               
             }

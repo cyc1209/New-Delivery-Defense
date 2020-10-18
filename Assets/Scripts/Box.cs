@@ -23,24 +23,26 @@ public class Box : MonoBehaviour
     private float random;
 
     public GameManager gameManager;
+    public SoundManager soundManager;
+    public LevelManager levelManager;
 
-    // 오디오 소스 생성해서 추가
+    public GameObject updownObj;
 
-    public AudioSource audioSource;
-    public AudioClip audioClip;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        audioSource = GetComponent<AudioSource>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+
         interactable = GetComponent<Interactable>();
         //currentTag = this.tag;
         touchable = true;
 
         random = UnityEngine.Random.Range(1.0f, 10.0f);
 
-        if (random <= 1.0f+(1f / gameManager.level) && random >= 1.0f)
+        if (random <= 1.0f+(gameManager.Level) && random >= 1.0f)
         {
             breakable = true;
             this.gameObject.GetComponent<MeshRenderer>().material.mainTexture= Resources.Load("Resources/glass") as Texture;
@@ -50,7 +52,7 @@ public class Box : MonoBehaviour
         if (gameManager.gameMode == 0)
         {
             weight = UnityEngine.Random.Range(3.0f, 5.0f);
-            if (weight <= (3.5f + (1f / gameManager.level)) )
+            if (weight <= (3.5f + (1f/gameManager.Level)))
                 this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
             else
                 this.transform.localScale = new Vector3(weight * 0.15f, weight * 0.3f, weight * 0.3f);
@@ -70,10 +72,10 @@ public class Box : MonoBehaviour
         }
         else if (gameManager.gameMode == 2)
         {
-            if (random >= 10.0f - (1f / gameManager.level) && random <= 10.0f)
+            if (random >= 10.0f - (gameManager.Level/3) && random <= 10.0f)
             {
                 updown = true;
-
+                updownObj.SetActive(true);
             }
             weight = UnityEngine.Random.Range(3.0f, 5.0f);
             if (weight <= 4f)
@@ -112,15 +114,15 @@ public class Box : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!(gameManager.isGaming))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Conveyor"))
-        {
-            touchable = false;
-        }
+       
     }
 
     void OnCollisionEnter(Collision collision)
@@ -128,30 +130,30 @@ public class Box : MonoBehaviour
         if (collision.relativeVelocity.magnitude > 5 && breakable)
         {
             UnityEngine.Debug.Log("Crash!");
-            playSound(audioClip, audioSource);
+            soundManager.PlayGlassCrashSound();
+            levelManager.TotalCountCrash += 1;
             //this.GetComponent<MeshRenderer>().material.color = Color.white;
-            if (collision.gameObject.CompareTag("TruckBound"))
+            if (!touchable)
             {
                 gameManager.boxCount--;
+                levelManager.TotalCountBox -= 1;
             }
             Destroy(this.gameObject);
         }
 
         if (updown && Vector3.Dot(Vector3.up, this.transform.up) <= 0)
         {
-            UnityEngine.Debug.Log("down");
-            playSound(audioClip, audioSource);
             //this.GetComponent<MeshRenderer>().material.color = Color.white;
-            if (collision.gameObject.CompareTag("TruckBound"))
+            if (!touchable)
             {
+                UnityEngine.Debug.Log("down");
+                soundManager.PlayUpDownCrashSound();
+                levelManager.TotalCountCrash += 1;
                 gameManager.boxCount--;
+                levelManager.TotalCountBox -= 1;
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
         }
     }
 
-    public static void playSound(AudioClip clip, AudioSource source)
-    {
-        source.Play();
-    }
 }

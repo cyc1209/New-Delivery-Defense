@@ -12,12 +12,16 @@ public class LaserHandler : MonoBehaviour
     public GameObject hand;
     public bool selected;
     public GameManager gameManager;
+    public SoundManager soundManager;
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        laserPointer.PointerIn += PointerInside;
-        laserPointer.PointerOut += PointerOutside;
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        hand = GameObject.Find("RightHand");
+        laserPointer = GameObject.Find("RightHand").GetComponent<SteamVR_LaserPointer>();
         laserPointer.PointerClick += PointerClick;
         selected = false;
     }
@@ -28,39 +32,28 @@ public class LaserHandler : MonoBehaviour
         if (e.target.name == "StartButton")
         {
             Debug.Log("Button was clicked");
+            soundManager.PlayButtonClickSound();
             gameManager.LoadSizeScene();
         }
         if (e.target.name == "WaveStartButton")
         {
             Debug.Log("Button was clicked");
+            soundManager.PlayButtonClickSound();
             gameManager.WaveStart();
+        }
+        if (e.target.name == "ReStartButton")
+        {
+            Debug.Log("Button was clicked");
+            soundManager.PlayButtonClickSound();
+            gameManager.ReStart();
+        }
+        if (e.target.name == "MainButton")
+        {
+            Debug.Log("Button was clicked");
+            soundManager.PlayButtonClickSound();
+            gameManager.LoadMainScene();
         }
     }
     // Update is called once per frame
-    void Update()
-    {
-
-    }
-    public void PointerInside(object sender, PointerEventArgs e)
-    {
-
-        if (e.target.name == this.gameObject.name && selected == false)
-        {
-            selected = true;
-            Debug.Log("pointer is inside this object" + e.target.name);
-        }
-    }
-    public void PointerOutside(object sender, PointerEventArgs e)
-    {
-
-        if (e.target.name == this.gameObject.name && selected == true)
-        {
-            selected = false;
-            Debug.Log("pointer is outside this object" + e.target.name);
-        }
-    }
-    public bool get_selected_value()
-    {
-        return selected;
-    }
+   
 }

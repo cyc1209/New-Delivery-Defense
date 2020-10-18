@@ -43,11 +43,11 @@ public class DistanceGrab : MonoBehaviour
                 }
             }
             blank = hit.collider.gameObject.GetComponentInChildren<Blank>();
-            blank.gameObject.GetComponent<MeshRenderer>().enabled = true;
+
         }
         else
         {
-            blank.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
         }
 
     }
