@@ -12,6 +12,7 @@ public class DistanceGrab : MonoBehaviour
     Hand hand;//our hand
     bool isAttached = false;//do we have something in our hand?
     GameObject attachedObject = null;//what do we have in our hand
+    Blank blank;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +42,14 @@ public class DistanceGrab : MonoBehaviour
                     //attaching to hand is in the late update function
                 }
             }
-           
+            blank = hit.collider.gameObject.GetComponentInChildren<Blank>();
+            blank.gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
-  
+        else
+        {
+            blank.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+
     }
     private void LateUpdate()
     {

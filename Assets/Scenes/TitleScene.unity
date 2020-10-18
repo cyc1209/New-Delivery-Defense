@@ -734,6 +734,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+--- !u!4 &639719959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 476540, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 639719958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &639719960 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485514, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 639719958}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &701259305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -993,6 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0faa27c0ba7eab42b1e0a422f0230ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   edge_1: {fileID: 375144066}
   edge_2: {fileID: 600127568}
 --- !u!1 &1246855260 stripped
@@ -1001,6 +1014,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 639719958}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1246855261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246855260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b19fad8c5441944a7dcca83e30dd9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointer: {fileID: 639719959}
+  thingsWeCanGrab:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &1246855262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,27 +1054,6 @@ MonoBehaviour:
   pointer: {fileID: 0}
   addRigidBody: 0
   reference: {fileID: 0}
---- !u!114 &1246855263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246855260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8fdbab9811d49246bb85e37694e7391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentObject: {fileID: 0}
-  pose: {fileID: 0}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  grabGrip:
-    actionPath: /actions/default/in/GrabGrip
-    needsReinit: 0
-  input_Sources: 0
 --- !u!4 &1361459995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5442227844851392656, guid: b6e8047738692694e86f546d20a2df21,
@@ -1058,6 +1066,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 639719958}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1583178228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583178227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b19fad8c5441944a7dcca83e30dd9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointer: {fileID: 639719960}
+  thingsWeCanGrab:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &1583178229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,27 +1106,6 @@ MonoBehaviour:
   pointer: {fileID: 0}
   addRigidBody: 0
   reference: {fileID: 0}
---- !u!114 &1583178230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583178227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8fdbab9811d49246bb85e37694e7391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentObject: {fileID: 0}
-  pose: {fileID: 0}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  grabGrip:
-    actionPath: /actions/default/in/GrabGrip
-    needsReinit: 0
-  input_Sources: 0
 --- !u!1 &1823518330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,12 +1237,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185ff749f3f9b894c945e9faeee14889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyes: {fileID: 0}
   gameManager: {fileID: 0}
   repText: {fileID: 0}
   timerText: {fileID: 0}
+  countText: {fileID: 0}
   prevUI: {fileID: 0}
   ingameUI: {fileID: 0}
+  gameoverUI: {fileID: 0}
 --- !u!114 &2143610940
 MonoBehaviour:
   m_ObjectHideFlags: 0

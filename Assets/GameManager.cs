@@ -51,6 +51,10 @@ public class GameManager : MonoBehaviour
                 }else if(gameMode == 1)
                 {
                     LoadTruckScene();
+                }else if(gameMode == 2)
+                {
+                    level++;
+                    LoadSizeScene();
                 }
             }
             if(reputation <= 0)

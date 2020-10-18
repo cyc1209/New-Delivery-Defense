@@ -2792,27 +2792,12 @@ MonoBehaviour:
   pointer: {fileID: 0}
   addRigidBody: 0
   reference: {fileID: 0}
---- !u!114 &1690745664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!4 &1690745664 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 476540, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1690745660}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690745661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8fdbab9811d49246bb85e37694e7391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentObject: {fileID: 0}
-  pose: {fileID: 0}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  grabGrip:
-    actionPath: /actions/default/in/GrabGrip
-    needsReinit: 0
-  input_Sources: 0
 --- !u!114 &1690745665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2837,7 +2822,29 @@ MonoBehaviour:
   pointer: {fileID: 0}
   addRigidBody: 0
   reference: {fileID: 0}
---- !u!114 &1690745666
+--- !u!4 &1690745666 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485514, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1690745660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1690745667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690745661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b19fad8c5441944a7dcca83e30dd9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointer: {fileID: 1690745666}
+  thingsWeCanGrab:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1690745668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2846,18 +2853,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1690745662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8fdbab9811d49246bb85e37694e7391, type: 3}
+  m_Script: {fileID: 11500000, guid: c8b19fad8c5441944a7dcca83e30dd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentObject: {fileID: 0}
-  pose: {fileID: 0}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  grabGrip:
-    actionPath: /actions/default/in/GrabGrip
-    needsReinit: 0
-  input_Sources: 0
+  pointer: {fileID: 1690745664}
+  thingsWeCanGrab:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1695769379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2998,6 +3000,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082784808748691738, guid: 62295188814f88b4f88b3409eb8bd599,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 712691535}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x

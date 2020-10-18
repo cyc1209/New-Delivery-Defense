@@ -35,11 +35,6 @@ public class LaserHandler : MonoBehaviour
             Debug.Log("Button was clicked");
             gameManager.WaveStart();
         }
-        if (e.target.name == "ReStartButton")
-        {
-            Debug.Log("Button was clicked");
-            gameManager.ReStart();
-        }
     }
     // Update is called once per frame
     void Update()

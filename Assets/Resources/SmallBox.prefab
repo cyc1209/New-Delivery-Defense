@@ -177,6 +177,7 @@ MonoBehaviour:
   highlightOnHover: 1
   hideHighlight: []
   hoverPriority: 0
+  isHovering: 0
 --- !u!114 &6626921066036600042
 MonoBehaviour:
   m_ObjectHideFlags: 0

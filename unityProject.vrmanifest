@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.deliverydefense.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\NCSOFT\\Documents\\New-Delivery-Defense\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\Choi Myoung Sik\\Documents\\New-Delivery-Defense\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "Delivery-Defense [Testing]"
