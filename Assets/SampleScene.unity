@@ -261,8 +261,10 @@ MonoBehaviour:
   reputation: 0
   level: 0
   gameMode: 0
-  prevUI: {fileID: 0}
   isGaming: 0
+  boxSpawner: {fileID: 0}
+  uIManager: {fileID: 0}
+  player: {fileID: 0}
   boxCount: 0
 --- !u!4 &158831635
 Transform:
@@ -676,6 +678,28 @@ MonoBehaviour:
   pointer: {fileID: 0}
   addRigidBody: 0
   reference: {fileID: 0}
+--- !u!4 &828672687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485514, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 828672680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &828672688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828672681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b19fad8c5441944a7dcca83e30dd9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointer: {fileID: 828672687}
+  thingsWeCanGrab:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &830548683
 GameObject:
   m_ObjectHideFlags: 0
