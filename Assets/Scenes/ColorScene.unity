@@ -315,6 +315,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082784808748691738, guid: 62295188814f88b4f88b3409eb8bd599,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 712691535}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -394,6 +399,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082784808748691738, guid: 62295188814f88b4f88b3409eb8bd599,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 712691535}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -882,6 +892,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082784808748691738, guid: 62295188814f88b4f88b3409eb8bd599,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 712691535}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1062,6 +1077,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082784808748691738, guid: 62295188814f88b4f88b3409eb8bd599,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 712691535}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1430,7 +1450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reputation: 0
-  level: 1
+  level: 2
   gameMode: 1
   isGaming: 0
   boxSpawner: {fileID: 2132521347}
@@ -1566,6 +1586,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082784808748691738, guid: 62295188814f88b4f88b3409eb8bd599,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 712691535}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x

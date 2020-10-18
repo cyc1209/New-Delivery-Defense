@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class BoxMove : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject edge_1;
     public GameObject edge_2;
 
@@ -25,7 +26,7 @@ public class BoxMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Box"))
         {
-            collision.gameObject.transform.Translate((edge_1.transform.position - edge_2.transform.position) * Time.deltaTime * 0.4f, Space.World);
+            collision.gameObject.transform.Translate((edge_1.transform.position - edge_2.transform.position) * Time.deltaTime * 0.3f * gameManager.level, Space.World);
         }
     }
 }
