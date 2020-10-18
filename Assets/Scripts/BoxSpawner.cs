@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class BoxSpawner : MonoBehaviour
 {
-    public float spawnTime = 2.0f;
-    public float limitTime = 20f;
+    float spawnTime;
+    public float limitTime;
     public Transform spawnPoint;
     public GameObject box;
     float deltaSpawnTime;
     float playingTime = 0;
     public GameManager gameManager;
-    
+    void Start()
+    {
+        spawnTime = 2f + (1f / gameManager.level);
+    }
     void Update()
     {
         if (gameManager.isGaming == true)

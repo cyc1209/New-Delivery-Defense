@@ -40,7 +40,7 @@ public class Box : MonoBehaviour
 
         random = UnityEngine.Random.Range(1.0f, 10.0f);
 
-        if (random <= 2.0f && random >= 1.0f)
+        if (random <= 1.0f+(1f / gameManager.level) && random >= 1.0f)
         {
             breakable = true;
             this.gameObject.GetComponent<MeshRenderer>().material.mainTexture= Resources.Load("Resources/glass") as Texture;
@@ -50,15 +50,15 @@ public class Box : MonoBehaviour
         if (gameManager.gameMode == 0)
         {
             weight = UnityEngine.Random.Range(3.0f, 5.0f);
-            if (weight <= 4.5f)
+            if (weight <= (3.5f + (1f / gameManager.level)) )
                 this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
             else
-                this.transform.localScale = new Vector3(weight * 0.2f, weight * 0.4f, weight * 0.4f);
+                this.transform.localScale = new Vector3(weight * 0.15f, weight * 0.3f, weight * 0.3f);
         }
         else if (gameManager.gameMode == 1)
         {
             weight = UnityEngine.Random.Range(3.0f, 5.0f);
-            this.transform.localScale = new Vector3(weight * 0.2f, weight * 0.4f, weight * 0.4f);
+            this.transform.localScale = new Vector3(weight * 0.15f, weight * 0.3f, weight * 0.3f);
 
             colorRandom = UnityEngine.Random.Range(1.0f, 4.0f);
             if (colorRandom >= 1.0f && colorRandom < 2.0f)
@@ -70,13 +70,13 @@ public class Box : MonoBehaviour
         }
         else if (gameManager.gameMode == 2)
         {
-            if (random >= 9.0f && random <= 10.0f)
+            if (random >= 10.0f - (1f / gameManager.level) && random <= 10.0f)
             {
                 updown = true;
 
             }
-            weight = UnityEngine.Random.Range(3.0f, 6.0f);
-            if (weight <= 4.5f)
+            weight = UnityEngine.Random.Range(3.0f, 5.0f);
+            if (weight <= 4f)
                 this.transform.localScale = new Vector3(weight * 0.1f, weight * 0.2f, weight * 0.2f);
             else
                 this.transform.localScale = new Vector3(weight * 0.15f, weight * 0.3f, weight * 0.3f);
