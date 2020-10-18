@@ -17,7 +17,7 @@ public class LaserInput : MonoBehaviour
     {
         currentObject = null;
     }
-    public void onDistanceGrab(Hand hand)
+
 
     // Update is called once per frame
     private void Update()
