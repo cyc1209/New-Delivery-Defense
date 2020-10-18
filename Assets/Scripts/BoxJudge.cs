@@ -26,19 +26,19 @@ public class BoxJudge : MonoBehaviour
                 case 1:
                     if (collision.gameObject.GetComponent<MeshRenderer>().material.color != Color.red)   //색깔
                     {
-                        
+                        gameManager.reputation -= 10;
                     }
                     break;
                 case 2:
                     if (collision.gameObject.GetComponent<MeshRenderer>().material.color != Color.blue)   //색깔
                     {
-
+                        gameManager.reputation -= 10;
                     }
                     break;
                 case 3:
                     if (collision.gameObject.GetComponent<MeshRenderer>().material.color != Color.green)   //색깔
                     {
-
+                        gameManager.reputation -= 10;
                     }
                     break;
                 default:

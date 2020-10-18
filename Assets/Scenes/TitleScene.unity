@@ -565,6 +565,10 @@ MonoBehaviour:
   reputation: 0
   level: 0
   gameMode: 2
+  isGaming: 0
+  boxSpawner: {fileID: 0}
+  uIManager: {fileID: 0}
+  player: {fileID: 2067568061}
   boxCount: 0
 --- !u!4 &338944736
 Transform:
@@ -1191,6 +1195,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2067568061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 639719958}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2143610938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1234,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185ff749f3f9b894c945e9faeee14889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eyes: {fileID: 0}
+  gameManager: {fileID: 0}
+  repText: {fileID: 0}
+  timerText: {fileID: 0}
+  prevUI: {fileID: 0}
+  ingameUI: {fileID: 0}
 --- !u!114 &2143610940
 MonoBehaviour:
   m_ObjectHideFlags: 0
