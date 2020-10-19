@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+        boxSpawner = GameObject.Find("SpawnPoint").GetComponent<BoxSpawner>();
 
         player = GameObject.Find("Player");
         Level = levelManager.Level;
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         }
         else if (gameMode == 1)
         {
-            player.transform.position = new Vector3(-1.64f, 0.86f, -1f);
+            player.transform.position = new Vector3(-1.5f, 0.86f, 0.5f);
             player.transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (gameMode == 2)
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour
 
     public void ReStart()
     {
+        boxSpawner = GameObject.Find("SpawnPoint").GetComponent<BoxSpawner>();
         boxSpawner.SetSpwanSettings();
         timer = boxSpawner.LimitTime + 10.0f;
         reputation = 100;
@@ -135,6 +137,11 @@ public class GameManager : MonoBehaviour
     }
     public void LoadSizeScene()
     {
+        if(gameMode == 3)
+        {
+            levelManager.Level = 1;
+            Level = levelManager.Level;
+        }
         SceneManager.LoadScene("SizeScene");
         Debug.Log(Level);
         gameMode = 0;
