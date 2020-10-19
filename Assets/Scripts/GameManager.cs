@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
         levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
         player = GameObject.Find("Player");
         Level = levelManager.Level;
     }
@@ -48,15 +49,22 @@ public class GameManager : MonoBehaviour
         if (gameMode == 0)
         {
            player.transform.position = new Vector3(-6.5f, 0.25f, -2.07f);
-            player.transform.eulerAngles = new Vector3(0, 180, 0);
+            player.transform.eulerAngles = new Vector3(0, 90, 0);
         }
         else if (gameMode == 1)
         {
-            player.transform.position = new Vector3(-1.64f, 0.86f, -1.86f);
+            player.transform.position = new Vector3(-1.64f, 0.86f, -1f);
+            player.transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (gameMode >= 2)
+        else if (gameMode == 2)
         {
-            player.transform.position = new Vector3(-0.47f, 0f, 0.47f);
+            player.transform.position = new Vector3(0f, 0f, -0.47f);
+            player.transform.eulerAngles = new Vector3(0, -45, 0);
+        }
+        else if (gameMode == 3)
+        {
+            player.transform.position = new Vector3(0f, 0f, -0.7f);
+            player.transform.eulerAngles = new Vector3(0, -45, 0);
         }
     }
 
@@ -77,12 +85,15 @@ public class GameManager : MonoBehaviour
                     LoadTruckScene();
                 }else if(gameMode == 2)
                 {
-                    if(Level == 3)
+                    if (Level == 3)
                     {
                         LoadEnding();
                     }
-                    levelManager.LevelUp();
-                    LoadSizeScene();
+                    else
+                    {
+                        levelManager.LevelUp();
+                        LoadSizeScene();
+                    }
                 }
             }
             if(reputation <= 0)
@@ -96,6 +107,8 @@ public class GameManager : MonoBehaviour
     {
         isGaming = false;
         uIManager.ShowEndingUI();
+        uIManager.HideIngameUI();
+        uIManager.HidePrevUI();
     }
 
     public void ReStart()
@@ -116,9 +129,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoadMainScene()
     {
-        Destroy(levelManager);
-        Destroy(soundManager);
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("MainScene");
         gameMode = 3;
         isGaming = false;
     }
@@ -144,6 +155,7 @@ public class GameManager : MonoBehaviour
 
     public void WaveStart()
     {
+        uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         uIManager.HidePrevUI();
         uIManager.ShowIngameUI();
         isGaming = true;

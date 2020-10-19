@@ -35,6 +35,16 @@ public class LaserHandler : MonoBehaviour
             soundManager.PlayButtonClickSound();
             gameManager.LoadSizeScene();
         }
+        if (e.target.name == "QuitButton")
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+            Application.OpenURL("http://google.com");
+#else
+            Application.Quit();
+#endif
+        }
         if (e.target.name == "WaveStartButton")
         {
             Debug.Log("Button was clicked");

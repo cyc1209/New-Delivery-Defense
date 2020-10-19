@@ -27,6 +27,7 @@ public class Box : MonoBehaviour
     public LevelManager levelManager;
 
     public GameObject updownObj;
+    public GameObject glassObj;
 
 
     // Start is called before the first frame update
@@ -45,7 +46,7 @@ public class Box : MonoBehaviour
         if (random <= 1.0f+(gameManager.Level) && random >= 1.0f)
         {
             breakable = true;
-            this.gameObject.GetComponent<MeshRenderer>().material.mainTexture= Resources.Load("Resources/glass") as Texture;
+            glassObj.SetActive(true);
 
         }
 

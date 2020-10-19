@@ -7,7 +7,7 @@ using Debug = UnityEngine.Debug;
 public class BoxSpawner : MonoBehaviour
 {
     float spawnTime;
-    private float limitTime = 11;
+    private float limitTime = 27;
     public Transform spawnPoint;
     public GameObject box;
     float deltaSpawnTime;

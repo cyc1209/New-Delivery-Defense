@@ -260,7 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reputation: 0
-  level: 0
   gameMode: 0
   isGaming: 0
   boxSpawner: {fileID: 0}
@@ -397,6 +396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mode: 0
   gameManager: {fileID: 0}
+  soundManager: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!1001 &697756572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -408,7 +409,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5da7d50552a38f04ab4e6a078b15a818, type: 2}
+      objectReference: {fileID: 2100000, guid: c748d0a54311f174698487cd09c92cf2, type: 2}
     - target: {fileID: 2617378477193556558, guid: 910658f948f0ed746be5ad85a9163964,
         type: 3}
       propertyPath: m_CastShadows
