@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
             levelText.text = gameManager.Level + "일차";
         if (gameManager.isGaming)
         {
-            repText.text = "명성치: " + gameManager.reputation;
+            repText.text = "평판: " + gameManager.reputation;
             timerText.text = "남은 시간: " + Mathf.Ceil(gameManager.Timer).ToString();
             if (countText != null)
                 countText.text = "실은 개수: " + gameManager.boxCount;
