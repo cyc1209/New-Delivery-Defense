@@ -136,12 +136,12 @@ PrefabInstance:
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1547177
+      value: -4.18
       objectReference: {fileID: 0}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.063664
+      value: -2.06
       objectReference: {fileID: 0}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
@@ -1324,12 +1324,12 @@ PrefabInstance:
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.044718
+      value: -5.44
       objectReference: {fileID: 0}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.333664
+      value: -2.23
       objectReference: {fileID: 0}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
@@ -2050,7 +2050,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613594197}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -2.3}
+  m_LocalPosition: {x: 0, y: 0, z: -2.61}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_Children:
   - {fileID: 73297867}
@@ -2158,12 +2158,12 @@ PrefabInstance:
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.904718
+      value: -7.58
       objectReference: {fileID: 0}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9036639
+      value: -2.03
       objectReference: {fileID: 0}
     - target: {fileID: 6993805915609657196, guid: 62295188814f88b4f88b3409eb8bd599,
         type: 3}

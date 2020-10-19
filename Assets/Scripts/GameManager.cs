@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         }
         else if (gameMode == 1)
         {
-            player.transform.position = new Vector3(-1.5f, 0.86f, 0.5f);
+            player.transform.position = new Vector3(-2f, 0.86f, -0.5f);
             player.transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (gameMode == 2)

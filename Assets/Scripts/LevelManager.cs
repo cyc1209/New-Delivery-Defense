@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
 
     public int CalcScore()
     {
-        TotalScore = (TotalCountBox * 5) - (TotalCountCrash * 5) + (900 + TotalMinusReputation);
+        TotalScore = (TotalCountBox * 10) - (TotalCountCrash * 5) + (600 + TotalMinusReputation);
         return TotalScore;
     }
     // Update is called once per frame

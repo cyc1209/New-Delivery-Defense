@@ -24,22 +24,25 @@ public class DistanceGrab : MonoBehaviour
     {
         //raycast and check if our hand is empty
         RaycastHit hit;
-        if (Physics.Raycast(pointer.position, pointer.forward, out hit, 10f, thingsWeCanGrab) && hand.currentAttachedObject == null)
+        if (Physics.Raycast(pointer.position, pointer.forward, out hit, 5f, thingsWeCanGrab) && hand.currentAttachedObject == null)
         {
             Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
             SteamVR_Input_Sources source = hand.handType;
             //are we pressing grip and trigger?
-            if (hand.grabGripAction[source].state == true && hand.grabPinchAction[source].state == true)
+            if (hit.collider.gameObject.CompareTag("Box"))
             {
-                //does the interactable component exist?
-                if (interactable != null)
+                if (hand.grabGripAction[source].state == true && hit.collider.gameObject.GetComponent<Box>().touchable)
                 {
-                    //move the object to your hand
-                    interactable.transform.LookAt(transform);
-                    interactable.gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 500, ForceMode.Force);
-                    attachedObject = interactable.gameObject;
-                    isAttached = true;
-                    //attaching to hand is in the late update function
+                    //does the interactable component exist?
+                    if (interactable != null)
+                    {
+                        //move the object to your hand
+                        interactable.transform.LookAt(transform);
+                        interactable.gameObject.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 500, ForceMode.Force);
+                        attachedObject = interactable.gameObject;
+                        isAttached = true;
+                        //attaching to hand is in the late update function
+                    }
                 }
             }
             blank = hit.collider.gameObject.GetComponentInChildren<Blank>();

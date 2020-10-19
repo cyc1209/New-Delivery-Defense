@@ -128,7 +128,7 @@ public class Box : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 5 && breakable)
+        if (collision.relativeVelocity.magnitude > 6 && breakable)
         {
             UnityEngine.Debug.Log("Crash!");
             soundManager.PlayGlassCrashSound();
